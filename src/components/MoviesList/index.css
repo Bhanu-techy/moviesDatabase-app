@@ -1,0 +1,50 @@
+.poster {
+  width: 200px;
+  border-radius: 5px;
+  height: 285px;
+}
+.movie-card {
+  width: 200px;
+  height: 400px;
+  margin: 10px;
+  font-family: roboto;
+}
+.title {
+  height: 35px;
+}
+.details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.view-detail-button {
+  border: none;
+  height: 26px;
+  width: 80px;
+  font-size: 12px;
+  color: #ffffff;
+  border-radius: 3px;
+  background-color: rgb(101, 101, 242);
+}
+
+@media (max-width: 768px) {
+  .poster {
+    width: 150px;
+    height: 220px;
+  }
+  .movie-card {
+    width: 150px;
+    height: 320px;
+  }
+  .title {
+    font-size: 14px;
+  }
+  .view-detail-button {
+    height: 20px;
+    width: 68px;
+    font-size: 10px;
+  }
+  .rating-para {
+    font-size: 12px;
+  }
+}

@@ -1,0 +1,84 @@
+.Movie-container {
+  padding: 10px;
+  color: #ffffff;
+  background-color: #000000;
+  display: flex;
+}
+.movie-bg {
+  background-color: #000000;
+  font-family: roboto;
+  padding: 10px;
+}
+.movie-poster {
+  width: 400px;
+  height: 600px;
+}
+.poster-name {
+  font-size: 25px;
+}
+.overview {
+  font-size: 15px;
+}
+.poster-div {
+  width: 50%;
+  text-align: center;
+  padding: 10px;
+}
+.details-view {
+  width: 50%;
+}
+.genre-list {
+  display: flex;
+
+  list-style: circle;
+}
+.genre {
+  width: 100px;
+}
+.cast-img {
+  width: 120px;
+  height: 150px;
+}
+.cast-list {
+  display: flex;
+  color: #ffffff;
+  flex-wrap: wrap;
+}
+.cast-item {
+  margin: 10px;
+  width: 120px;
+}
+.cast-head {
+  color: #ffffff;
+}
+.job {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .Movie-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+  .poster-div {
+    width: 100%;
+    text-align: left;
+    padding: 10px;
+  }
+  .details-view {
+    width: 100%;
+  }
+  .movie-poster {
+    width: 320px;
+    height: 400px;
+  }
+  .cast-img {
+    width: 100px;
+  }
+  .cast-item {
+    width: 100px;
+    margin: 5px;
+  }
+}

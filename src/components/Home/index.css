@@ -1,0 +1,42 @@
+.home-container {
+  padding: 10px;
+  color: #ffffff;
+  background-color: #000000;
+}
+ul {
+  list-style: none;
+}
+.movie-list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100vw;
+}
+.failure-container {
+  background-color: #000000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  height: 90vh;
+}
+.loader-container {
+  background-color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #ffffff;
+  height: 90vh;
+}
+
+@media (max-width: 768px) {
+  .heading {
+    font-size: 18px;
+  }
+}
+
+.heading {
+  font-size: 25px;
+}
