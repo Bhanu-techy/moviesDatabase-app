@@ -79,7 +79,7 @@ class MovieDetails extends Component {
                       />
                     </div>
                     <div className="details-view">
-                      <h1 className="poster-name">Title: {title}</h1>
+                      <p className="poster-name">Title: {title}</p>
                       <p className="overview">Overview: {overview}</p>
                       <p>Genres</p>
                       <ul className="genre-list">

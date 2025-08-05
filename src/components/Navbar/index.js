@@ -1,7 +1,5 @@
 import {Component} from 'react'
 import {Link} from 'react-router-dom'
-import {BiMoviePlay} from 'react-icons/bi'
-import {CiSearch} from 'react-icons/ci'
 import MovieContext from '../../context/MovieContext'
 import MoviesList from '../MoviesList'
 import './index.css'
@@ -16,11 +14,8 @@ class Navbar extends Component {
 
     const api = '67b388df313f3bd63b0298bd44d3a106'
     const url = `https://api.themoviedb.org/3/search/movie?api_key=${api}&language=en-US&query=${searchInput}&page=1`
-    const headers = {
-      method: 'GET',
-    }
 
-    const response = await fetch(url, headers)
+    const response = await fetch(url)
     const data = await response.json()
     console.log(data)
     this.setState({searchData: data.results})
@@ -30,7 +25,6 @@ class Navbar extends Component {
     const {searchInput} = this.state
 
     const {onClickSearch} = this.context
-
     if (searchInput !== '') {
       onClickSearch()
       this.getDetails()
@@ -45,8 +39,9 @@ class Navbar extends Component {
     const {searchData} = this.state
     return (
       <div className="home-container">
-        <h1>Search Results</h1>
+      <h1>Search Results</h1>
         <ul className="movie-list">
+        
           {searchData.map(each => (
             <MoviesList detail={each} key={each.id} />
           ))}
@@ -64,54 +59,35 @@ class Navbar extends Component {
           return (
             <>
               <nav>
-                <div className="navsm-view">
-                  <Link to="/" className="icon-div">
-                    <h1>movieDB</h1>
-                    <BiMoviePlay size={35} />
-                  </Link>
-                  <div className="searchbarsm">
-                    <input
-                      type="search"
-                      className="inputsearch"
-                      onChange={this.onChangeSearch}
-                    />
-                    <button
-                      type="button"
-                      className="searchbtn"
-                      onClick={this.onClickSearchBtn}
-                    >
-                      <CiSearch size={20} />
-                    </button>
-                  </div>
+                <div className="navsm-view icon-div">
+                  <h1>movieDB</h1>
                 </div>
-
-                <div className="nav-items">
-                  <div className="searchbar">
-                    <input
-                      type="search"
-                      className="inputsearch"
-                      onChange={this.onChangeSearch}
-                    />
-                    <button
-                      type="button"
-                      className="searchbtn"
-                      onClick={this.onClickSearchBtn}
-                    >
-                      <CiSearch size={20} />
-                    </button>
-                  </div>
-                  <Link to="/top-rated">
-                    <button type="button" className="navbtn">
-                      Top rated
-                    </button>
-                  </Link>
-                  <Link to="upcoming">
-                    <button type="button" className="navbtn">
-                      Upcoming
-                    </button>
-                  </Link>
+                <div className="searchbar">
+                  <input
+                    type="text"
+                    className="inputsearch"
+                    onChange={this.onChangeSearch}
+                  />
+                  <button
+                    type="button"
+                    className="searchbtn"
+                    onClick={this.onClickSearchBtn}
+                  >
+                    Search
+                  </button>
                 </div>
+                <Link to="/top-rated">
+                  <button type="button" className="navbtn">
+                    Top rated
+                  </button>
+                </Link>
+                <Link to="upcoming">
+                  <button type="button" className="navbtn">
+                    Upcoming
+                  </button>
+                </Link>
               </nav>
+              
               {showSearchResults ? this.renderSearchResults() : null}
             </>
           )

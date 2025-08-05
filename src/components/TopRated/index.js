@@ -44,7 +44,7 @@ class TopRated extends Component {
 
     return (
       <div className="home-container">
-        <h1 className="heading">Popular</h1>
+        <h1 className="heading">Top Rated</h1>
         <ul className="movie-list">
           {details.map(each => (
             <MoviesList detail={each} key={each.id} />

@@ -24,10 +24,8 @@ class Home extends Component {
     const api = '67b388df313f3bd63b0298bd44d3a106'
 
     const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api}&language=en-US&page=1`
-    const headers = {
-      method: 'GET',
-    }
-    const response = await fetch(url, headers)
+
+    const response = await fetch(url)
     const data = await response.json()
     if (response.ok) {
       this.setState({
@@ -50,7 +48,6 @@ class Home extends Component {
 
     return (
       <div className="home-container">
-        <h1 className="heading">Popular</h1>
         <ul className="movie-list">
           {details.map(each => (
             <MoviesList detail={each} key={each.id} />
@@ -62,7 +59,6 @@ class Home extends Component {
 
   renderFailureView = () => (
     <div className="failure-container">
-      <h1>Result Failed</h1>
       <p>We cound not found the page you have requested, please try again</p>
       <button type="button" onClick={this.getDetails}>
         Try again
@@ -92,6 +88,7 @@ class Home extends Component {
           return (
             <>
               <Navbar />
+              <h1>Popular</h1>
               {showSearchResults ? null : this.renderResultView()}
             </>
           )

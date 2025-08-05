@@ -5,13 +5,11 @@ const MoviesList = props => {
   const {detail} = props
   const {poster_path, title, vote_average, id} = detail
 
+  const url = `https://image.tmdb.org/t/p/w500${poster_path}`
+
   return (
     <li className="movie-card">
-      <img
-        src={`https://image.tmdb.org/t/p/w500/${poster_path}`}
-        alt={title}
-        className="poster"
-      />
+      <img src={url} alt={poster_path} className="poster" />
       <p className="title">{title}</p>
       <div className="details">
         <Link to={`/movie/${id}`}>
