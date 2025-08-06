@@ -3,11 +3,19 @@
   color: #ffffff;
   background-color: #000000;
 }
+.buttons-div{
+  display: flex;
+  width: 150px;
+  justify-content: space-around;
+  align-items: center;
+  margin-left: auto;
+  padding: 10px;
+}
 ul {
   list-style: none;
 }
 .movie-list {
-  gap : 0px;
+  gap: 0px;
   padding: 0px;
   display: flex;
   justify-content: center;

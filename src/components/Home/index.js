@@ -13,17 +13,18 @@ const apiStatusConstants = {
 }
 
 class Home extends Component {
-  state = {details: [], homeState: apiStatusConstants.initial}
+  state = {details: [], homeState: apiStatusConstants.initial, pageNo: 1}
 
   componentDidMount() {
     this.getDetails()
   }
 
   getDetails = async () => {
+    const {pageNo} = this.state
     this.setState({homeState: apiStatusConstants.inProgress})
     const api = '67b388df313f3bd63b0298bd44d3a106'
 
-    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api}&language=en-US&page=1`
+    const url = `https://api.themoviedb.org/3/movie/popular?api_key=${api}&language=en-US&page=${pageNo}`
 
     const response = await fetch(url)
     const data = await response.json()
@@ -37,6 +38,23 @@ class Home extends Component {
     }
   }
 
+  onClickNxtBtn = () => {
+    this.setState(
+      prevState => ({pageNo: prevState.pageNo + 1}),
+      this.getDetails,
+    )
+  }
+
+  onClickPrevBtn = () => {
+    const {pageNo} = this.state
+    if (pageNo > 1) {
+      this.setState(
+        prevState => ({pageNo: prevState.pageNo - 1}),
+        this.getDetails,
+      )
+    }
+  }
+
   renderLoader = () => (
     <div className="loader-container">
       <Loader type="Oval" color="#0b69ff" height="50" width="50" />
@@ -47,7 +65,7 @@ class Home extends Component {
     const {details} = this.state
 
     return (
-      <div className="home-container">
+      <div className="">
         <ul className="movie-list">
           {details.map(each => (
             <MoviesList detail={each} key={each.id} />
@@ -80,6 +98,7 @@ class Home extends Component {
   }
 
   render() {
+    const {pageNo} = this.state
     return (
       <MovieContext.Consumer>
         {value => {
@@ -88,8 +107,19 @@ class Home extends Component {
           return (
             <>
               <Navbar />
-              <h1>Popular</h1>
-              {showSearchResults ? null : this.renderResultView()}
+              <div className="home-container">
+                <h1>Popular</h1>
+                {showSearchResults ? null : this.renderResultView()}
+                <div className="buttons-div">
+                  <button type="button" onClick={this.onClickPrevBtn}>
+                    Prev
+                  </button>
+                  <p>{pageNo}</p>
+                  <button type="button" onClick={this.onClickNxtBtn}>
+                    Next
+                  </button>
+                </div>
+              </div>
             </>
           )
         }}
