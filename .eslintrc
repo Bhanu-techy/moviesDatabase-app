@@ -5,10 +5,9 @@
   },
   "parser": "babel-eslint",
   "extends": [
-  "airbnb",
-  "prettier"
-],
-  
+    "airbnb",
+    "prettier"
+  ],
   "parserOptions": {
     "ecmaFeatures": {
       "jsx": true
